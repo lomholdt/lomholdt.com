@@ -2,7 +2,7 @@
   <div class="hello">
     <img src="../assets/me.jpg" id="Lomholdt__Me">
     <h1>{{ msg }}</h1>
-    <h2>About Me</h2>
+    <h2>Links</h2>
     <ul>
       <li>
         <a
@@ -11,10 +11,9 @@
         </a>
       </li>
       <li>
-
-      </li>
-      <li>
-
+        <a href="https://github.com/lomholdt">
+          GitHub
+        </a>
       </li>
       <li>
         <a
@@ -25,6 +24,8 @@
         </a>
       </li>
     </ul>
+    <h2>Contact</h2>
+    jonaslomholdt [at] gmail [dot] com
   </div>
 </template>
 
