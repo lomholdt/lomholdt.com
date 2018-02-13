@@ -5,6 +5,7 @@
     <p>Aloha stranger! My name is Jonas.</p>
     <p>I'm a {{age}} year old software developer living in Copenhagen.</p>
     <p v-show="weather">The temperature here is currently {{currentTemperature}}°C</p>
+    <p>If you wan't to contact me, please use one of the options below.</p>
     <h2>Links</h2>
     <ul>
       <li>
