@@ -10,9 +10,11 @@
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit",
-    "build": "node build/build.js"
+    "build": "node build/build.js && netlify-lambda build functions"
   },
   "dependencies": {
+    "axios": "^0.17.1",
+    "netlify-lambda": "^0.2.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
