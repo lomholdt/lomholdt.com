@@ -1,7 +1,10 @@
 <template>
   <div class="hello">
     <img src="../assets/me.jpg" id="Lomholdt__Me">
-    <h1>{{ msg }}</h1>
+    <h2>About</h2>
+    <p>Aloha stranger! My name is Jonas.</p>
+    <p>I'm a {{age}} year old software developer living in Copenhagen.</p>
+    <p v-show="weather">The temperature here is currently {{currentTemperature}}°C</p>
     <h2>Links</h2>
     <ul>
       <li>
@@ -18,8 +21,7 @@
       <li>
         <a
           href="https://twitter.com/jonaslomholdt"
-          target="_blank"
-        >
+          target="_blank">
           Twitter
         </a>
       </li>
@@ -30,11 +32,41 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'Welcome',
+  mounted () {
+    axios.get(`/.netlify/functions/weather`)
+      .then(res => {
+        this.weather = res.data
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  },
+  computed: {
+    age () {
+      return this.calculateAge(this.birthday)
+    },
+    currentTemperature () {
+      if (this.weather) {
+        return Math.round(this.weather.timeserie[0].temp)
+      }
+      return 'N/A'
+    }
+  },
+  methods: {
+    calculateAge (birthday) {
+      let diff = Date.now() - birthday.getTime()
+      let date = new Date(diff)
+      return date.getFullYear() - 1970
+    }
+  },
   data () {
     return {
-      msg: ''
+      birthday: new Date('1988-09-21'),
+      weather: null
     }
   }
 }
